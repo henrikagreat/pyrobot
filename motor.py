@@ -1,26 +1,19 @@
 import RPi.GPIO as GPIO 
 
 class Motor():
-    def __init__(self):
+    def __init__(self): 
+        self.pin_a = 14
+        self.pin_b = 15
+        self.pin_c = 18
+        self.pin_d = 23
 
         GPIO.setwarnings(False) 
- 
-        pin_a = 14
-        pin_b = 15
-        pin_c = 18
-        pin_d = 23
-
-        a = True
-        b = False
-        c = True
-        d = False
-
         GPIO.setmode(GPIO.BCM) 
 
-        GPIO.setup(pin_a, GPIO.OUT)
-        GPIO.setup(pin_b, GPIO.OUT)
-        GPIO.setup(pin_c, GPIO.OUT)
-        GPIO.setup(pin_d, GPIO.OUT)
+        GPIO.setup(self.pin_a, GPIO.OUT)
+        GPIO.setup(self.pin_b, GPIO.OUT)
+        GPIO.setup(self.pin_c, GPIO.OUT)
+        GPIO.setup(self.pin_d, GPIO.OUT)
     
     def left_forward(self):
         GPIO.output(self.pin_a, True)
