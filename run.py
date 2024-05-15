@@ -7,7 +7,7 @@ from button_name import ButtonName
 def main():
     done = False
     motor = Motor()
-    controller = Controller(motor)
+    controller = Controller()
     distance = Distance()
 
     while not done:
