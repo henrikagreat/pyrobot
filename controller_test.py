@@ -31,10 +31,11 @@ from button_map import ButtonMap
 from motor import Motor
  
 def main():
+    pygame.init()
 
     joysticks = {}
-    pygame.init()
     done = False
+    motor = Motor()
 
     while not done:
         # Event processing step.
@@ -46,12 +47,12 @@ def main():
  
             if event.type == pygame.JOYBUTTONDOWN:
                 if event.button == ButtonMap.SQUARE:
-                    Motor.run_forward()
+                    motor.run_forward()
  
             if event.type == pygame.JOYBUTTONUP:
                 print("Joystick button released.")
                 if event.button == ButtonMap.SQUARE:
-                    Motor.stop()
+                    motor.stop()
  
             # Handle hotplugging
             if event.type == pygame.JOYDEVICEADDED:
@@ -69,6 +70,4 @@ def main():
  
 if __name__ == "__main__":
     main()
-    # If you forget this line, the program will 'hang'
-    # on exit if running from IDLE.
     pygame.quit()
