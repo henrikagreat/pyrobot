@@ -11,7 +11,6 @@ def main():
     distance = Distance()
 
     while not done:
-        controller.getNextInput()
         #current_distance = distance.readDistance()
         use_controller(controller, motor)
 
