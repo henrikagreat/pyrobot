@@ -29,6 +29,7 @@
 import pygame
 from button_map import ButtonMap
 from motor import Motor
+from distance import Distance
  
 def main():
     pygame.init()
@@ -36,6 +37,7 @@ def main():
     joysticks = {}
     done = False
     motor = Motor()
+    distance = Distance()
 
     while not done:
         # Event processing step.
@@ -50,6 +52,7 @@ def main():
 
                 if event.button == ButtonMap.TRIANGLE:
                     motor.forward()
+                    distance.readDistance()
                 elif event.button == ButtonMap.SQUARE:
                     motor.turn_left()
                 elif event.button == ButtonMap.CIRCLE:
