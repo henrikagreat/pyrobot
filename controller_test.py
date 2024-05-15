@@ -59,8 +59,7 @@ def main():
  
             if event.type == pygame.JOYBUTTONUP:
                 print("Joystick button released.")
-                if event.button == ButtonMap.SQUARE:
-                    motor.stop()
+                motor.stop()
  
             # Handle hotplugging
             if event.type == pygame.JOYDEVICEADDED:
