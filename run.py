@@ -3,6 +3,8 @@ from distance import Distance
 from controller import Controller
 from button_action import ButtonAction
 from button_name import ButtonName
+import random
+import time
 
 def main():
     done = False
@@ -12,15 +14,22 @@ def main():
 
     while not done:
         try:
-            #current_distance = distance.readDistance()
-            use_controller(controller, motor)
+            use_distance(distance, motor)
+            #use_controller(controller, motor)
         except Exception as e:
             return
 
+def use_distance(distance, motor):
+    current_distance = distance.readDistance()
+
+    if current_distance >= 10:
+        motor.forward()
+    else:
+        motor.turn_left()
+
+
 def use_controller(controller, motor):
     button_event = controller.getInput()
-
-    print(button_event)
 
     if button_event == None:
         return
