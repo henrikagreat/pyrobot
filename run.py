@@ -28,6 +28,9 @@ def use_controller(controller, motor):
     if button_event.getAction() == ButtonAction.BUTTON_DOWN:
         if button_event.getName() == ButtonName.TRIANGLE:
             motor.forward()
+    
+    if button_event.getAction() == ButtonAction.BUTTON_UP:
+        motor.stop()
 
 if __name__ == "__main__":
     main()
