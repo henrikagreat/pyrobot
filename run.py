@@ -22,10 +22,11 @@ def main():
 def use_distance(distance, motor):
     current_distance = distance.readDistance()
 
-    if current_distance >= 10:
+    if current_distance >= 40:
         motor.forward()
     else:
         motor.turn_left()
+        time.sleep(1)
 
 
 def use_controller(controller, motor):
