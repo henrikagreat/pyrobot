@@ -18,6 +18,8 @@ def main():
 def use_controller(controller, motor):
     button_event = controller.getInput()
 
+    print(button_event)
+
     if button_event == None:
         return
 
