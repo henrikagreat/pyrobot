@@ -25,47 +25,17 @@
 # Axis 3: Right joystick Y-dir (-1 to 1, up to down)
 # Axis 4: L2 (-1 to 1, fully released to fully pressed)
 # Axis 5: R2 (-1 to 1, fully released to fully pressed)
- 
-ps5_button_map = {
-    0: 'X',
-    1: 'Circle',
-    2: 'Square',
-    3: 'Triangle',
-    4: 'Top left small button',
-    5: 'Playstation logo button',
-    6: 'Top right small button',
-    7: 'Left stick press',
-    8: 'Right stick press',
-    9: 'L1',
-    10: 'R1',
-    11: 'D-pad Up',
-    12: 'D-pad Down',
-    13: 'D-pad Left',
-    14: 'D-pad Right',
-    15: 'Touchpad press',
-    16: '?'
-}
- 
-ps5_axis_map = {
-    0: 'Left joystick X-dir',
-    1: 'Left joystick Y-dir',
-    2: 'Right joystick X-dir',
-    3: 'Right joystick Y-dir',
-    4: 'L2',
-    5: 'R2'
-}
- 
- 
+
 import pygame
- 
-from motor import *
+from button_map import ButtonMap
+from motor import Motor
  
 def main():
-    joysticks = {}
 
+    joysticks = {}
     pygame.init()
- 
     done = False
+
     while not done:
         # Event processing step.
         # Possible joystick events: JOYAXISMOTION, JOYBALLMOTION, JOYBUTTONDOWN,
@@ -75,18 +45,13 @@ def main():
                 done = True  # Flag that we are done so we exit this loop.
  
             if event.type == pygame.JOYBUTTONDOWN:
-                print("Joystick button pressed.")
-                if event.button == 0:
-                    joystick = joysticks[event.instance_id] 
-                    if joystick.rumble(0, 0.7, 500): 
-                        print(f"Rumble effect played on joystick {event.instance_id}") 
-                if event.button == 3:
-                    run(1)
+                if event.button == ButtonMap.SQUARE:
+                    Motor.run_forward()
  
             if event.type == pygame.JOYBUTTONUP:
                 print("Joystick button released.")
-                if event.button == 3:
-                    stop()
+                if event.button == ButtonMap.SQUARE:
+                    Motor.stop()
  
             # Handle hotplugging
             if event.type == pygame.JOYDEVICEADDED:
@@ -94,7 +59,7 @@ def main():
                 # joystick, filling up the list without needing to create them manually.
                 joy = pygame.joystick.Joystick(event.device_index)
                 joysticks[joy.get_instance_id()] = joy
-                print(f"Joystick {joy.get_instance_id()} connencted")
+                print(f"Joystick {joy.get_instance_id()} connected")
                 print("We're in.")
  
             if event.type == pygame.JOYDEVICEREMOVED:
