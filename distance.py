@@ -6,8 +6,8 @@ class Distance():
     def __init__(self):
         GPIO.setmode(GPIO.BCM)
 
-        self.GPIO_TRIGGER = 23  # Change this to your GPIO trigger pin
-        self.GPIO_ECHO = 24     # Change this to your GPIO echo pin
+        self.GPIO_TRIGGER = 5  
+        self.GPIO_ECHO = 6
 
         GPIO.setup(self.GPIO_TRIGGER, GPIO.OUT)
         GPIO.setup(self.GPIO_ECHO, GPIO.IN)
@@ -26,6 +26,7 @@ class Distance():
         # save StartTime
         while GPIO.input(self.GPIO_ECHO) == 0:
             StartTime = time.time()
+            print("Starttime {StartTime}")
 
         # save time of arrival
         while GPIO.input(self.GPIO_ECHO) == 1:
