@@ -48,8 +48,14 @@ def main():
             if event.type == pygame.JOYBUTTONDOWN:
                 print(f"ButtonDown: {event.button}")
 
-                if event.button == ButtonMap.SQUARE:
-                    motor.run_forward()
+                if event.button == ButtonMap.TRIANGLE:
+                    motor.forward()
+                elif event.button == ButtonMap.SQUARE:
+                    motor.turn_left()
+                elif event.button == ButtonMap.CIRCLE:
+                    motor.turn_right()
+                elif event.button == ButtonMap.CROSS:
+                    motor.reverse()
  
             if event.type == pygame.JOYBUTTONUP:
                 print("Joystick button released.")

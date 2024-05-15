@@ -37,11 +37,11 @@ class Motor():
         GPIO.output(self.pin_c, False)
         GPIO.output(self.pin_d, False)
     
-    def run_forward(self):
+    def forward(self):
         self.right_forward()
         self.left_forward()
 
-    def run_reverse(self):
+    def reverse(self):
         self.right_reverse()
         self.left_reverse()    
     
