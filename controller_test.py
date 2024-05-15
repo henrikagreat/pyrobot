@@ -62,6 +62,8 @@ from motor import *
  
 def main():
     joysticks = {}
+
+    pygame.init()
  
     done = False
     while not done:
