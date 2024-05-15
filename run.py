@@ -11,9 +11,11 @@ def main():
     distance = Distance()
 
     while not done:
-        #current_distance = distance.readDistance()
-        use_controller(controller, motor)
-
+        try:
+            #current_distance = distance.readDistance()
+            use_controller(controller, motor)
+        except Exception as e:
+            return
 
 def use_controller(controller, motor):
     button_event = controller.getInput()
