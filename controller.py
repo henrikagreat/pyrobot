@@ -37,26 +37,26 @@ class Controller():
         pygame.init()
 
     def getInput(self):
-        event = pygame.event.wait()
+        for event in pygame.event.get():
 
-        if event.type == pygame.JOYBUTTONDOWN:
-            print(f"ButtonDown: {event.button}")
-            return ButtonEvent(ButtonAction.BUTTON_DOWN, ButtonName(event.button))
+            if event.type == pygame.JOYBUTTONDOWN:
+                print(f"ButtonDown: {event.button}")
+                return ButtonEvent(ButtonAction.BUTTON_DOWN, ButtonName(event.button))
 
-        if event.type == pygame.JOYBUTTONUP:
-            print("Joystick button released.")
-            return ButtonEvent(ButtonAction.BUTTON_UP, ButtonName(event.button))
-        
-        # Handle hotplugging
-        if event.type == pygame.JOYDEVICEADDED:
-            # This event will be generated when the program starts for every
-            # joystick, filling up the list without needing to create them manually.
-            joy = pygame.joystick.Joystick(event.device_index)
-            print(f"Joystick {joy.get_instance_id()} connected")
-            print("We're in.")
+            if event.type == pygame.JOYBUTTONUP:
+                print("Joystick button released.")
+                return ButtonEvent(ButtonAction.BUTTON_UP, ButtonName(event.button))
+            
+            # Handle hotplugging
+            if event.type == pygame.JOYDEVICEADDED:
+                # This event will be generated when the program starts for every
+                # joystick, filling up the list without needing to create them manually.
+                joy = pygame.joystick.Joystick(event.device_index)
+                print(f"Joystick {joy.get_instance_id()} connected")
+                print("We're in.")
 
-        if event.type == pygame.JOYDEVICEREMOVED:
-            print(f"Joystick {event.instance_id} disconnected")
-            print("We're out.")
+            if event.type == pygame.JOYDEVICEREMOVED:
+                print(f"Joystick {event.instance_id} disconnected")
+                print("We're out.")
         
         return None
