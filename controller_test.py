@@ -46,6 +46,8 @@ def main():
                 done = True  # Flag that we are done so we exit this loop.
  
             if event.type == pygame.JOYBUTTONDOWN:
+                print(f"ButtonDown: {event.button}")
+
                 if event.button == ButtonMap.SQUARE:
                     motor.run_forward()
  
