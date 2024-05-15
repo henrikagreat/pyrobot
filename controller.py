@@ -47,3 +47,5 @@ class Controller():
         if event.type == pygame.JOYBUTTONUP:
             print("Joystick button released.")
             return ButtonEvent(ButtonAction.BUTTON_UP, ButtonName(event.button))
+        
+        return None

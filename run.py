@@ -18,6 +18,9 @@ def main():
 def use_controller(controller, motor):
     button_event = controller.getInput()
 
+    if button_event == None:
+        return
+
     if button_event.getAction() == ButtonAction.BUTTON_DOWN:
         if button_event.getName() == ButtonName.TRIANGLE:
             motor.forward()
