@@ -34,6 +34,7 @@ from button_event import ButtonEvent
 class Controller():
 
     def __init__(self):
+        self.joysticks = {}
         pygame.init()
 
     def getInput(self):
@@ -52,10 +53,12 @@ class Controller():
                 # This event will be generated when the program starts for every
                 # joystick, filling up the list without needing to create them manually.
                 joy = pygame.joystick.Joystick(event.device_index)
+                self.joysticks[joy.get_instance_id()] = joy
                 print(f"Joystick {joy.get_instance_id()} connected")
                 print("We're in.")
 
             if event.type == pygame.JOYDEVICEREMOVED:
+                del self.joysticks[event.instance_id]
                 print(f"Joystick {event.instance_id} disconnected")
                 print("We're out.")
         
