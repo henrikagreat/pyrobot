@@ -28,6 +28,12 @@ def use_controller(controller, motor):
     if button_event.getAction() == ButtonAction.BUTTON_DOWN:
         if button_event.getName() == ButtonName.TRIANGLE:
             motor.forward()
+        elif button_event.getName() == ButtonName.SQUARE:
+            motor.turn_left()
+        elif button_event.getName() == ButtonName.CIRCLE:
+            motor.turn_right()
+        elif button_event.getName() == ButtonName.CROSS:
+            motor.reverse()
     
     if button_event.getAction() == ButtonAction.BUTTON_UP:
         motor.stop()
