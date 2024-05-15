@@ -26,7 +26,6 @@ class Distance():
         # save StartTime
         while GPIO.input(self.GPIO_ECHO) == 0:
             StartTime = time.time()
-            print("Starttime {StartTime}")
 
         # save time of arrival
         while GPIO.input(self.GPIO_ECHO) == 1:
@@ -38,5 +37,5 @@ class Distance():
         # and divide by 2, because there and back
         distance = (TimeElapsed * 34300) / 2
 
-        print(f"Distance measured {distance}")
+        print(f"Distance measured {distance}cm")
         return distance
