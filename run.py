@@ -16,7 +16,8 @@ def main():
         try:
             use_distance(distance, motor)
             #use_controller(controller, motor)
-        except Exception as e:
+        except:
+            motor.stop()
             return
 
 def use_distance(distance, motor):
